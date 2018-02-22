@@ -66,6 +66,8 @@ volumes:[
             stage ('BUILD: containerize and publish TO repository') {
                 println "DEBUG: build and push containers stage starting"
                 container('docker') {
+                    
+                    sh "docker version"
                     // Login to ACR
                     withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: acrJenkinsCreds,
                                     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
